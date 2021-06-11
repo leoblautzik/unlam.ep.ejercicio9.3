@@ -19,6 +19,8 @@
 #include <string.h>
 #include <ctype.h>
 
+#define MAX_ALUMNOS 80
+
 void clean_stdin(void)
 {
     int c;
@@ -48,7 +50,7 @@ int main()
 {
     int cantidadDeAlumnos = 0;
     Alumno alumnos[80];
-    cantidadDeAlumnos = ingreso(alumnos, 5);
+    cantidadDeAlumnos = ingreso(alumnos, MAX_ALUMNOS);
     
     if(cantidadDeAlumnos > 0)
     {
@@ -66,10 +68,7 @@ int ingreso(Alumno alumnos[], int tamanio)
     alumnos[i].DNI = leerDNI(alumnos, i);
     while(alumnos[i].DNI !=0 && i < tamanio)
     {
-        //getchar();
-        
         leerApenom(alumnos[i].Apenom, 81);
-        
         for(j=0; j<2; j++)
         {
             printf("Ingrese nota %d: ",j+1);
@@ -151,7 +150,7 @@ int buscar(Alumno alumnos[], int dni, int cant)
 
 void leerApenom(char texto[], int largo)
 {
-    //clean_stdin();
+    clean_stdin();
 	do
 	{
 		printf("Ingrese Apellido, Nombre: ");
